@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | CarParts</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+  <section class="login-container">
+    <div class="logo-container">
+      <img src="{% static 'images/logo.png' %}" alt="CarParts Logo" class="logo">
+      <h1>CarParts</h1>
+    </div>
+
+    <form method="post" class="login">
+      <h2>Login</h2>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}">
+      <button type="submit" class="btn submit">Login</button>
+      <p>Don’t have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+    </form>
+  </section>
+
+</body>
+</html>
