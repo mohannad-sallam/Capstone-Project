@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ part.name }} | CarParts{% endblock %}
+
+{% block content %}
+<div class="part-detail">
+  <img src="{% static part.image_url %}" alt="{{ part.name }}" class="detail-image">
+  <div class="detail-info">
+    <h1>{{ part.name }}</h1>
+    <p><strong>Brand:</strong> {{ part.brand }}</p>
+    <p><strong>Price:</strong> ${{ part.price }}</p>
+    <p class="description">{{ part.description }}</p>
+  </div>
+</div>
+{% endblock %}

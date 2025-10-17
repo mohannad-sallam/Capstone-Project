@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}CarParts{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-left">
+        <img
+          src="{% static 'images/logo.png' %}"
+          alt="CarParts Logo"
+          class="logo"
+        />
+        <span class="brand">CarParts</span>
+      </div>
+      <div class="nav-right">
+        <a href="{% url 'home' %}">Home</a>
+        <form id="logout-form" method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">Log out</button>
+        </form>
+      </div>
+    </nav>
+
+    <main class="content">{% block content %} {% endblock %}</main>
+  </body>
+</html>

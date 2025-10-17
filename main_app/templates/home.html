@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Car Parts Home</title>
-  </head>
-  <body>
-    <h1>Car Parts Home</h1>
+{% extends 'base.html' %}
+{% load static %}
 
+
+{% block title %}Home | CarParts{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Available Car Parts</h1>
+
+<div class="parts-grid">
+  {% for part in parts %}
+  <div class="card">
+    <img src="{% static part.image_url %}" alt="{{ part.name }}" />
+    <div class="card-body">
+      <h2>{{ part.name }}</h2>
+      <p class="brand">{{ part.brand }}</p>
+      <p class="price">${{ part.price }}</p>
+      <a href="{% url 'part_detail' part.pk %}" class="btn">View Details</a>
     </div>
-  </body>
-</html>
+  </div>
+  {% empty %}
+  <p>No parts available yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
