@@ -17,15 +17,32 @@
         />
         <span class="brand">CarParts</span>
       </div>
-      <div class="nav-right">
+
+      <div class="nav-right" id="nav-links">
         <a href="{% url 'home' %}">Home</a>
         <form id="logout-form" method="post" action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="logout-btn">Log out</button>
         </form>
       </div>
+
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
 
     <main class="content">{% block content %} {% endblock %}</main>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>
